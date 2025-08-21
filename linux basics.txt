@@ -1,0 +1,194 @@
+
+
+free
+stable
+secure
+open-source
+Open-source: open-source software is softwar with sourcecode that anyone can inspect,modify and enhance.
+we can access the sr code of th linux OS.
+allowed to run the program for any purpose/usuge
+Allowed to change the program working procedure
+free to distribute
+ 
+supercomputers
+embedded systems
+robotic operating systems
+satellite communication system
+internet of things devices
+flight simulators
+bitcoin and crytocurrency mining
+advanced driver assistance systems(ADAS)
+
+/  : this is a top level directory. It is parent directory for all other directories, it is represented by the forward slash(/).This is call root directory.It is starting poing of OS.
+
+
+/root – The home directory of the root:  it is home directory for root user(superuser).It provides the working environment for the root user. 
+to switch to root user, 'sudo su' or 'sudo -i'.
+
+/home (User personal data):      It is all the non-root users home directiory . It is the home directiory for other users in the linux.it provides a working environment for the other users.
+if u create a user in the anyplace, the users can be showed under home directory only.to add or create a new user, the command is 'useradd username'.
+
+/bin binaries:  Which contains all the linux commands. If you gave the command which is not available in the bin, OS doesn't detect that command. It is used by the all users means for root and non-root users(binary files).
+eg: ls, touch,cp,mv
+
+
+/sbin system binaries: It only contains the commands used by the super user(root user).super user binary files.
+eg:Essential system utilities needed for system boot and recovery (init, shutdown, fdisk).
+Restricted Access: Regular (non-root) users usually don’t have /sbin in their PATH, meaning they must use sudo to run most of these commands.
+
+/boot bootfiles:The /boot directory in Linux operating systems contains the files necessary for booting the system. It is a critical part of the system that holds the kernel, bootloader, and other essential boot-related files.
+
+/etc  Configuration files:   is the central configuration directory for the operating system and installed applications. It contains system-wide configuration files, startup scripts, and settings that define how the system and services behave
+Holds Configuration Files: Contains settings for system services, user authentication, network configuration, etc/passwd, userinfo/
+Editable by Root: Most files in /etc require superuser (root) privileges to modify.
+to gave sudoers permission to the user, go to /etc/sudoers  and vi sudoers, add the username .now the user have permission to create a file or others in the root directiory.
+
+sshd_config: 
+------------
+The `sshd_config` file configures the SSH server (`sshd`), defining authentication, security policies, connection settings, and access controls.The sshd_config file is the main configuration file for the OpenSSH server (sshd).
+Key Directives in sshd_config
+Here are some of the most important settings in sshd_config:
+
+Directive	Description	Example
+Port	Specifies the SSH listening port (default: 22).	Port 22 (Default) or Port 2222 (Custom)
+PermitRootLogin	Controls whether the root user can log in via SSH.	PermitRootLogin no (Disable root login)
+PasswordAuthentication	Allows/disables password-based login.	PasswordAuthentication no (Disable password login, use keys instead)
+PubkeyAuthentication	Enables public key authentication.	PubkeyAuthentication yes
+AllowUsers	Specifies which users can access SSH.	AllowUsers alice bob (Only allow Alice and Bob)
+DenyUsers	Specifies users who cannot access SSH.	DenyUsers guest
+AllowGroups	Only members of these groups can access SSH.	AllowGroups sshusers
+DenyGroups	Members of these groups are denied SSH access.	DenyGroups nogroup
+MaxAuthTries	Limits the number of failed login attempts.	MaxAuthTries 3
+
+
+/usr (User binaries and program data): The /usr directory in Linux stands for "Unix System Resources" and contains user-installed software(commands which are already availble in the linux ), libraries, documentation, and other system resources. It is one of the largest directories in a typical Linux system and is not meant for system-critical files (which are found in /bin, /sbin, and /lib).
+
+/opt – Optional software:  this file holds the additional software installed on the system.A sub-directory is created for each installed software.It is additional directiory for usr/.it is used for installing third-party or add-on software
+Used for manually installed software (e.g., proprietary apps like Google Chrome, Zoom,maven and gitcommands).
+Usually contains subdirectories for each application.
+
+
+/dev Device files: It contains the device files like hardisk.The /dev directory in Linux is a special directory that contains device files representing system hardware and virtual devices.Instead of accessing hardware directly, Linux interacts with devices through these special files.
+This directory only contains special files, including those relating to the devices. These are virtual files, not physically on the disk.
+
+Some interesting examples of these files are:
+
+/dev/null: can be sent to destroy any file or string
+/dev/zero: contains an infinite sequence of 0
+/dev/random: contains an infinite sequence of random values
+
+Contains device files for interacting with hardware.
+Device files are not actual files but interfaces to kernel drivers.
+
+
+/var - Variable Data Directory
+The /var directory in Linux stores variable (changing) data, such as logs, cache, mail, and temporary files generated by system services and applications. Unlike /etc (which holds static configuration files), the contents of /var frequently change during system operation.
+
+
+  
+/tmp – Temporary files
+As the name suggests, this directory holds temporary files. Many applications use this directory to store temporary files. Even you can use directory to store temporary files.
+
+But do note that the contains of the /tmp directories are deleted when your system restarts. Some Linux system also delete files old files automatically so don’ store anything important here.
+
+/lib – Shared libraries
+Libraries are basically codes that can be used by the executable binaries. The /lib directory holds the libraries needed by the binaries in /bin and /sbin directories.
+
+Libraries needed by the binaries in the /usr/bin and /usr/sbin are located in the directory /usr/lib.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+The Linux directory structure follows the **Filesystem Hierarchy Standard (FHS)**, which defines the organization of files and directories in a Linux system. Below is a breakdown of the main directories, categorized by their role in different system phases.  
+
+---
+
+## **1. Boot Phase (System Startup)**
+These directories are essential for starting the Linux system.  
+
+| Directory | Description | Example |
+|-----------|-------------|------------|
+| `/boot` | Contains bootloader files, the Linux kernel, and initial RAM disk (initrd/initramfs). | `/boot/vmlinuz-5.15.0-60-generic` (Kernel image) |
+| `/sbin` | System binaries for administrative tasks (restricted to root). | `/sbin/fsck` (Filesystem check tool) |
+| `/etc` | System configuration files for the OS and services. | `/etc/fstab` (Defines mountable filesystems) |
+
+---
+
+## **2. User Phase (User Interaction and Applications)**
+After booting, these directories are used for user programs and files.  
+
+| Directory | Description | Example |
+|-----------|-------------|------------|
+| `/home` | Stores personal files for users. | `/home/user/Documents/report.pdf` |
+| `/bin` | Essential binaries accessible by all users. | `/bin/ls` (Lists files in a directory) |
+| `/usr` | Contains installed software and libraries for user applications. | `/usr/bin/firefox` (Firefox browser) |
+
+---
+
+## **3. System Operation Phase (Processes and Resources Management)**
+These directories are used for managing running processes and system resources.  
+
+| Directory | Description | Example |
+|-----------|-------------|------------|
+| `/var` | Stores variable data like logs, cache, and temporary files. | `/var/log/syslog` (System log file) |
+| `/proc` | Virtual filesystem containing runtime system information. | `/proc/cpuinfo` (CPU details) |
+| `/sys` | Provides information about hardware and devices. | `/sys/class/net/eth0` (Network interface details) |
+
+---
+
+## **4. Storage & Temporary Files Phase**
+These directories are used for mounting, external storage, and temporary files.  
+
+| Directory | Description | Example |
+|-----------|-------------|------------|
+| `/mnt` | Temporary mount point for external filesystems. | `/mnt/usb` (Mounted USB drive) |
+| `/media` | Auto-mounted removable media like USBs and CDs. | `/media/user/MyDrive` |
+| `/tmp` | Temporary storage for files, cleared on reboot. | `/tmp/session.log` (Temporary log file) |
+
+---
+
+## **5. System Administration & Security Phase**
+Used for system administration, user privileges, and installed software.  
+
+| Directory | Description | Example |
+|-----------|-------------|------------|
+| `/root` | Home directory for the root user. | `/root/.bashrc` (Shell configuration for root) |
+| `/opt` | Third-party applications and add-on software. | `/opt/google/chrome` (Google Chrome installation) |
+| `/dev` | Contains device files for hardware. | `/dev/sda1` (Primary disk partition) |
+| `/lib` | Shared libraries required for system programs. | `/lib/x86_64-linux-gnu/libc.so.6` |
+
+---
+
+### **Conclusion**
+The Linux filesystem is structured to keep system files organized and separated based on their role. Each phase of the system relies on different directories to function properly.
+
+Would you like an in-depth explanation of any specific directory? 🚀

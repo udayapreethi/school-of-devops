@@ -1,0 +1,39 @@
+Defination of DevOps:    DevOps is combination of software development(Dev) and It operations(ops). It is culture that improves collabaration, automation process, accelerate the delivery of applications and enhance or increase software quality.
+Main aim: collaboration, automation, monitoring and testing
+
+========================================
+
+
+Package: Collection of files, including code, configuration files and other components. (package and artfact are same)
+eg: WAR, JAR, EAR
+
+==========================================
+
+
+Version controll system:   It is tool that helps the developers to track, keep, manage and collaborate the changes with in code, files, docs overtime.
+* Records all the changes made to a file or set of files and it allows the keep tracking of the changes which are made by whom.
+*which allows you revert to specific file or set of files to a previous state or entire project to the previous state.
+* Helps to recover the lost files.
+
+=========================================
+
+
+Repository:    A folder is tracking by git is called Repository.
+                     or 
+It is centralized storage location where code, artfact, dependencies are stored, managed and versioned.
+
+Features:
+       It is bascially managed by version controll system like git.	
+       These can holds the types of content, including source code, compiled binaries, libraries, configuration files required to build, test and deploy software applications.
+
+==========================================
+
+
+
+compile:    Process of converting the source code which is written in high level programming language into binary language
+ eg:java,c++, python into the machine language like binary language.
+
+===========================================
+
+Commit:    A commit in git saves changes to the local repository. It acts like a snapshot of the project at a particular time.
+Now ur changes are locally stored but not yet pushed to the remote repo.	   

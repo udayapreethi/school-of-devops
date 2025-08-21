@@ -1,0 +1,179 @@
+git:    It is distuributed version control tool which is used for managing the source code and to track changes over a period of time.
+
+git hub:  It is an online platform for storing, sharing, and managing code. It helps developers collaborate, track changes, and work on projects together using **Git**, a version control system
+
+
+three stages in the git
+
+working area,staging area and local repository
+
+working area : where you can make or edit the changes in the files.
+
+staging area : after making the changes , need to commit those changes 
+
+local repo: pushing the changes to the local repo
+
+
+
+=====================================
+
+1. Configuration and Setup	
+	
+Command	Description
+git --version	      Checks the installed Git version.
+git config --global   user.name "Your Name"	Sets the global username for commits.
+git config --global   user.email "you@example.com"	Sets the global email for commits.
+git config --list	  Displays the current Git configuration.
+	
+	
+2. Creating and Initializing a Repository	
+	
+Command	Description
+git init	        Initializes a new Git repository in the current directory.
+git clone [URL] 	Clones an existing repository from a remote URL.
+	
+	
+3. Basic File Operations	
+	
+Command	Description
+git status	        Shows the current state of the working directory and staging area.
+git add [file]	    Stages a specific file for the next commit.
+git add .	        Stages all modified and new files.
+git reset [file]	Unstages a file but keeps changes in the working directory.
+git rm [file]	    Removes a file from the repository and staging area.
+	
+	
+4. Committing Changes	
+	
+Command	Description
+git commit -m "Commit message"	Commits staged changes with a message.
+git commit --amend	            Modifies the last commit message.
+	
+	
+5. Branching and Merging	
+	
+Command	Description
+git branch	                    Lists all local branches.
+git branch [branch-name]	    Creates a new branch.
+git checkout [branch-name]	    Switches to an existing branch.
+git checkout -b [branch-name]	Creates and switches to a new branch.
+git merge [branch-name]	        Merges another branch into the current branch.
+git branch -d [branch-name]	    Deletes a branch.
+
+6. Viewing Commit History	
+	
+Command	Description
+git log	                           Displays the commit history.
+git log --oneline	               Shows commit history in a compact format.
+git log --graph --oneline --all	   Displays a visual representation of branches.
+	
+	
+7. Undoing Changes	
+	
+Command	Description
+git checkout -- [file]	Discards changes in a file.
+git reset --soft HEAD~1	Undo the last commit but keep changes staged.
+git reset --hard HEAD~1	Completely removes the last commit and changes.
+	
+	
+8. Working with Remotes	
+	
+Command	Description
+git remote -v	            Lists all configured remote repositories.
+git remote add origin [URL]	Adds a new remote repository.
+git push origin [branch]	Pushes changes to the remote repository.
+git pull origin [branch]	Fetches and integrates changes from the remote repository.
+	
+	
+9. Stashing Changes	
+	
+Command	Description
+git stash	    Saves uncommitted changes for later use.
+git stash pop	Restores the last stashed changes.
+git stash list	Lists all stashed changes.
+git stash drop	Deletes the last stash.
+	
+	
+10. Tagging Releases	
+	
+Command	Description
+git tag [tag-name]	 Creates a new tag for a commit.
+git tag	             Lists all tags.
+git push origin [tag-name]	Pushes a specific tag to the remote repository.
+	
+
+git fork
+ creates a copy of a repository on your GitHub (or GitLab, etc.) account, letting you propose changes without write access to the original repo.
+git clone
+ creates a local copy of any Git repository (your own or someone else’s) on your machine for development.
+
+ 
+
+======================================================
+
+
+Installation Process:
+
+
+### **How to Install Git on Your System** 🖥️  
+
+#### **🔹 Windows**  
+1. **Download Git** → Go to [Git's official website](https://git-scm.com/downloads) and download the latest version for Windows.  
+2. **Run the Installer** → Open the downloaded `.exe` file.  
+3. **Follow Setup Wizard** → Keep the default options and click **Next** until installation is complete.  
+4. **Verify Installation** → Open **Command Prompt (CMD)** or **Git Bash**, then type:  
+   ```sh
+   git --version
+   ```
+   If installed correctly, it will display the Git version.
+
+=============================================
+
+#### **🔹 macOS**  
+**Method 1: Using Homebrew (Recommended)**  
+1. Open **Terminal** and run:  
+   ```sh
+   brew install git
+   ```  
+2. Check installation with:  
+   ```sh
+   git --version
+   ```
+
+**Method 2: Using the Git Installer**  
+1. Download Git for macOS from [Git's official website](https://git-scm.com/downloads).  
+2. Run the `.dmg` file and follow the setup instructions.  
+
+====================================
+
+
+#### **🔹 Linux (Ubuntu/Debian)**  
+1. Open **Terminal** and run:  
+   ```sh
+   sudo apt update
+   sudo apt install git -y
+   ```  
+2. Verify installation:  
+   ```sh
+   git --version
+   ```
+
+For **Fedora**:  
+```sh
+sudo dnf install git -y
+```
+
+For **Arch Linux**:  
+```sh
+sudo pacman -S git
+```
+
+---
+
+### **🔹 Configure Git (After Installation)**  
+After installing, set up your name and email:  
+```sh
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+```
+

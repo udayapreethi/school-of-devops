@@ -1,0 +1,152 @@
+ansible playbook
+
+a playbook is a configuration file written in YAML(yet another markup language) that provides instructions for what need to be done.
+
+ansible playbook are executed on a set, group or classification of hosts which together make up an ansible inventory
+
+one or more ansible tasks can be combined to make a play. two or more plays can be combined to create an ansible playbook
+
+
+What are Ansible Roles?
+As your playbooks grow bigger, you don’t want one giant file doing everything. That’s where roles come in!
+                                      or
+Take a playbook and split the different sections into different folders and place them under one umbrella which is called role.
+
+A role is a structured, reusable folder that contains:
+
+Tasks
+Variables
+Templates
+Handlers
+Files
+Metadata
+
+we can't run the roles separately. we will run roles inside the palybook.
+
+
+roles directory structure
+
+roles/
+  apache/
+    tasks/
+	handlers/
+	library
+	files/
+	templates/
+	vars/
+	defaults/
+	meta/
+  mysql/
+    tasks/   inside this there is file called main.yml
+	handlers/
+	library
+	files/
+	templates/
+	vars/
+	defaults/
+	meta/ 
+
+
+What are Tasks in Ansible?
+Tasks are the building blocks of Ansible Playbooks.
+A task tells Ansible what to do on a server (like install software, copy files, start a service).
+Each task uses a module to do the actual work.
+You define tasks in a playbook using YAML syntax.	
+	
+What are Modules in Ansible?
+	
+Modules in Ansible are reusable, standalone scripts that Ansible runs to perform specific tasks on a managed host. They are the building blocks used within tasks.		
+Modules are the tools Ansible uses to interact with systems. 
+
+
+
+
+creating a new role:
+
+to create a new role , there is a command called ansible_galaxy.
+  ansible-galaxy init <role_name>
+
+ 1. 'ansible-galaxy init apache'
+ 
+ It creates a directory like this:
+
+  apache/
+├── defaults/
+│   └── main.yml
+├── files/
+├── handlers/
+│   └── main.yml
+├── meta/
+│   └── main.yml
+├── tasks/
+│   └── main.yml
+├── templates/
+├── tests/
+│   ├── inventory
+│   └── test.yml
+└── vars/
+    └── main.yml
+
+ 2. Write Tasks in the Role
+Edit roles/apache/tasks/main.yml and define tasks (no tasks: keyword needed): 
+  
+  - name: Install Apache2
+  apt:
+    name: apache2
+    state: present
+  when: ansible_os_family == "Debian"
+
+- name: Start Apache2
+  service:
+    name: apache2
+    state: started
+    enabled: yes
+
+  3. Create Your Playbook and Use the Role
+Create a main.yml playbook in your project directory:
+ 
+ ---
+- name: Configure Web Server
+  hosts: all
+  become: yes
+  roles:
+    - apache
+4. Run the Playbook
+
+ansible-playbook main.yml -i inventory
+
+
+
+  
+
+
+
+
+
+
+
+ansible-project/
+├── inventory/
+│   └── hosts             # Inventory file (list of target hosts)
+├── roles/
+│   └── webserver/
+│       ├── tasks/
+│       │   └── main.yml
+│       ├── handlers/
+│       │   └── main.yml
+│       ├── templates/
+│       │   └── index.html.j2
+│       ├── defaults/
+│       │   └── main.yml
+│       ├── vars/
+│       │   └── main.yml
+│       ├── files/
+│       │   └── some_config.conf
+│       └── meta/
+│           └── main.yml
+├── site.yml              # 🔥 Main playbook (entry point)
+└── ansible.cfg           # Optional: configuration file
+  
+  
+  
+ansible-playbook site.yaml 

@@ -1,0 +1,259 @@
+Introduction to Devops
+
+what is devops
+History of devops
+what is dev and ops
+devops defination 
+devops and software development life cycle
+build and release workflor
+
+
+GIT
+
+what is git
+installing git for windows and linux
+basic commands overview
+diff b/w git and svn
+git stages
+creating branches and branching strategy
+git merge and rebase
+backing out changes
+renaming and moving files and deleting files
+git repo setup
+git pull, push and fetch 
+git stash
+git conflicts
+git fetch, merge
+git tags 
+git revert
+git cherry pick
+how to use github and bit bucket
+
+
+
+MAVEN
+
+overview of maven
+diff b/wmaven and ant
+how to install maven in windows and linux
+maven phases
+how to create .jar, .war and .ear files
+how to add dependency , priperties and plugins
+sample maven projects
+how to deploy executable files in application servers
+
+TOMCAT
+what is tomcat
+how to install tomcat in windows and linux/AWS
+how to deploy code in tomcat
+deploying code by using jenkins
+
+JENKINS
+
+what is CI/CD
+introduction to jenkins
+history of jenkins/hudson 
+how to install jenkins in windows and linux
+how to create jobs
+diff types of jobs
+working with github
+working with bulds tools
+build from github project
+managing remote systems with jenkins
+parameterized builds
+securing jenkins
+how to install plugins in jenkins 
+scheduling builds
+setting up different types of automated builds
+how to configure one job after another job
+configure global securit jenkins administration
+how to create maven type job
+how create ant type job
+jenins pipeline by using scriot and plugins
+jenkins backup
+how to deploy code in servers
+authentication and authorization
+how to create nodes in diff servers
+buld pipeline view
+most useful 20 plugins
+
+
+Sonarcube
+
+what is sonarcube
+how to install
+analyzing with sonarcube scanner for maven
+integrate sonarqube with maven
+integrate sonarqube with jenkins
+
+CHEF and ANSIBLE
+
+workflow of chef
+how to install in linux/windows
+what is work station , chef server and nodes
+servers and nodes concept 
+chef configuration concepts
+workstation setup
+creating cookbooks and uploading into server
+how to use ruby in chef
+about bootstrap
+package/service actions	
+installing multiple packages at one time
+how to manage chef servers
+create roles and adding roles to organization
+how to add run list to node
+check node details
+ how to create data bags
+ add database to organization
+ create a server and add to organization
+ check node details using knife
+ create organization
+ environments
+add yourself and node to organization
+adding nodes to chef server
+most useful cookbooks, databags , env, and roles
+what is puppet
+diff b/w  puppet and chef
+what is ansible and its features
+how to setup ansible
+understanding ansible architure and execution
+ansible documentation
+installing packages by using ansible
+ansible modules, writing playbook
+ansible roles and diff types of playbooks
+
+
+
+DOCKER
+
+learning the basics of docker
+introduction 
+containers vs vm
+docker architure
+docker hub
+docker installation
+creation our firest image
+working with multiple images
+creating shared volume groups
+create own images
+creating own docker files
+docker events
+docker volumes 
+docker web-applications 
+docker netwoking 
+docker file for user
+volume management
+docker link
+docker compose
+creating docker-hub act and managing docker images
+
+
+KUBERNETES
+
+what is kubernetes
+bascis of kubernetes container orchestration
+diff b/w kubernetes and docker/docker swarm
+why really we need kubernetes for docker
+installation and configuration of kubernetes cluster
+deploying apps on the cluster and scaling it 
+what are pods, services and volumes in kubernetes
+scheduling the applications on the container
+PODS
+namespaces
+resource requirements
+multi-container pods
+security contexts
+replicasets
+deployments
+
+
+TERRAFORM
+
+introduction 
+terraform installation on linux/windows
+AWS CLI  installation
+getting started with terraform
+terraform modules
+terraform workflow
+terraform projects
+
+AWS
+
+introduction to cloud computing
+essential characteristics of cloud computing
+service models in cloud computing
+introduction to AWS
+aws act creating and free tier limitations overview
+
+EC2
+
+EC2 instance launch wizard
+ec2 instance types
+generating custom public key for ec2 instatneces
+security groups volumes and snapshots
+creating customized amazon machine images
+elastic load balances and health checks
+auto scaling groups
+EBS
+cloud watch
+creating billlin alaram and ec2 instace alarms
+S3
+
+
+
+VPC virtual private cloud
+
+netwoking basics
+ creating custom vpcs and custom subnets
+ route tables and igw
+ vpn configuration with aws
+ elastic ip
+ route -53
+ ENI	
+ 
+ 
+ 
+ 
+ APPLICATION SERVICES
+ 
+ simple notification service
+ simple email service
+ 
+ 
+ database:
+ 
+ launching a RDS instance (MYSQL,MSSQL,AURORA)
+ dynamoDB
+ EFS
+ 
+ 
+ Identity Access management
+ root act vs IAM user
+ IAM password policies
+ creating customer managed policies
+ groups
+ roles
+ 
+ LINUX and Shell scripting
+ 
+ all basics of linux
+ how to create files, dir, groups
+ how to chnage permissions of files, dir, groups , how to create users
+ ssh
+ scp
+ winscp
+ crontab
+ passswordless authentication
+ working with services
+ most use full commands cp, mv, tar, yum, rpm, wget, rm, find, vinm, cat, touch, 
+ 
+ 
+ Virtualization :
+ 
+ what is virtualization
+ diff b/w bare metal, vm and docker
+ installing centos/RHEL on VM ware
+ installing centos/RHEL on virtualbox
+ 
+	
+

@@ -1,0 +1,212 @@
+
+What is Ansible?
+Ansible is an open-source automation tool used for configuration management, application deployment,  and task automation. It simplifies IT automation by allowing users to define infrastructure as code (IaC).
+
+ansible is used mainly for below 3 tasks,
+installation  automate the installation of the software in variable servers.
+configuration  update already existing confg, add new confg and delete confg
+deployment   to deploy the web servers or other servers
+
+Main Aim of Ansible
+The primary goal of Ansible is to automate IT infrastructure by simplifying configuration management, application deployment, and system administration tasks.
+
+Key Objectives of Ansible:
+
+Automate Repetitive Tasks
+Reduces manual effort in configuring and managing servers.
+Examples: Installing software, updating configurations, managing users.
+Ensure Consistency and Standardization
+Avoids human errors by enforcing Infrastructure as Code (IaC).
+Ensures all servers have the same configuration.
+
+Key Features of Ansible
+
+Agentless: No need to install any software on managed nodes; it uses SSH for communication.
+Simple YAML Syntax: Uses YAML-based playbooks to define automation tasks.
+Idempotent: Ensures tasks run only if required, preventing unnecessary canges.
+Declarative & Procedural: Can define the desired state of a system or execute tasks step-by-step.
+Scalable & Secure: Can manage thousands of servers securely using SSH.
+
+How Ansible Works
+
+Control Node: The machine where Ansible runs (no agent required on managed nodes).
+Inventory: A list of servers (hosts) to be managed.
+Playbooks: YAML files containing tasks and configurations.
+Modules: Predefined functions (e.g., apt, yum, copy, file) to automate tasks.
+Connection: Uses SSH (Linux) or WinRM (Windows) for communication.
+Common Use Cases
+Server Provisioning (installing software, configuring services).
+Configuration Management (ensuring consistent system configurations).
+Application Deployment (automating code deployment).
+Orchestration (managing multiple systems, containers, and cloud environments).
+Security & Compliance Automation (applying security policies across servers).
+
+Ansible setup:
+
+create the instances in the aws  like ubuntu, redhat,aws,
+[ec2-user@ip-172-31-44-9 ~]$ sudo su
+[root@ip-172-31-44-9 ec2-user]# hostnamectl set-hostname host2-ansible =to change the hostname (optional)
+[root@ip-172-31-44-9 ec2-user]#
+exit
+[ec2-user@ip-172-31-44-9 ~]$ sudo su
+[root@host2-ansible ec2-user]#
+[root@host2-ansible ec2-user]# cd /etc/ssh/       ===== to enable the sshd-config, cd to /etc/ssh/ and ls in ssh and vi sshd-config to enable the below 1 note
+[root@host2-ansible ssh]# ls
+
+In all servers:
+
+1) Enable sshd_config - /etc/ssh/sshd_config
+	PermitRootLogin yes
+	PubkeyAuthentication yes
+	PasswordAuthentication yes  
+
+After change the configuration restart sshd
+# systemctl restart sshd 
+
+
+2) 
+# ssh-keygen - in mgmt server and got # cat /root/.ssh/id_rsa.pub  copy the key into remote server "authorized_keys"
+ 
+3) Install ansible:
+ sudo apt update -y && sudo apt upgrade -y    ===for update
+sudo apt install ansible -y                    === for installation
+
+4) We can add the ips in the hosts/(inventory)file. inventory file means where we can add the names or users or ips of the manage nodes.
+cd /etc/ansible/    if ansible is not available u can create and add the inventory.
+do ls and then 
+add managenode ips in hosts file.
+Ex:
+[my_servers]       [my_servers]
+13.61.176.142      16.171.194.244
+16.171.170.186     13.60.36.72
+
+5) write playbook 
+---
+- name: Create a file and install HTTPD on remote servers
+  hosts: my_servers
+  become: yes
+  tasks:
+    - name: Create a file
+      file:
+        path: /opt/hello.txt
+        state: touch
+        owner: root
+        group: root
+        mode: '0777'
+
+6)after writing the playbook, we can paste it in the config.yaml. config.yaml file is located in the 
+root@mgmt-ansible:/opt# vi config.yaml
+root@mgmt-ansible:/opt# ansible-playbook config.yaml
+
+Tools to Help to validate the syntax
+
+ *VSCode with Ansible plugins – for syntax highlighting
+ *Online YAML to JSON converters – to understand the structure
+ *YAML linters – to validate your syntax
+
+PlaybooK:::::::::::::::::::::::::
+
+---
+- name: Create a file and install HTTPD on remote servers
+  hosts: my_servers
+  become: yes
+  tasks:
+    - name: Create a file
+      file:
+        path: /opt/hello.txt
+        state: touch
+        owner: root
+        group: root
+        mode: '0777'
+    - name: Install HTTPD package
+      yum:
+        name: httpd
+        state: present
+	  when: ansible_os_family == "RedHat"	
+    - name: Start HTTPD Service
+      service:
+        name: httpd
+        state: started 
+	  when: ansible_os_family == "RedHat"			
+    - name: Enable HTTPD Service to Start on Boot
+      service:
+        name: httpd
+        enabled: yes
+	  when: ansible_os_family == "RedHat"
+# This is for Ubuntu::	  
+    - name: Install apache2 package
+      yum:
+        name: apache2
+        state: present
+	  when: ansible_os_family == "Debian"
+    - name: Start apache2 Service
+      service:
+        name: apache2
+        state: started 
+	  when: ansible_os_family == "Debian"
+    - name: Enable apache2 Service to Start on Boot
+      service:
+        name: apache2
+        enabled: yes
+	  when: ansible_os_family == "Debian"	  
+	  
+    - name: Install wget package
+      yum:
+        name: wget
+        state: present		
+    - name: Download Apache Maven
+      get_url:
+        url: "https://dlcdn.apache.org/maven/maven-4/4.0.0-rc-3/binaries/apache-maven-4.0.0-rc-3-bin.tar.gz"
+        dest: "/opt/apache-maven-4.0.0-rc-3-bin.tar.gz"
+    - name: Extract Apache Maven
+      shell: tar -xvzf /opt/apache-maven-4.0.0-rc-3-bin.tar.gz -C /opt/
+	  
+	  
+	  root@mgmt-ansible:/opt# vi config.yaml
+root@mgmt-ansible:/opt# ansible-playbook config.yaml
+
+	  
+
+the automatic logout timeout for your AWS Linux servers is set too low:
+===========================================================================
+
+Time extention for time out from aws instalce 
+TMOUT=1000000
+sudo vi /etc/profile
+
+source ~/.bashrc
+
+=====================
+java set up:
+
+sudo apt update
+sudo apt install openjdk-17-jdk -y
+
+Verify installation:
+
+java -version
+
+
+set environment variable:
+
+set in /etc/.bashrc
+export JAVA_HOME=java_path
+export PATH=$PATH:$JAVA_HOME/bin
+echo $JAVA_HOME
+
+export JAVA_HOME=/usr/bin/java
+
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+export PATH=$PATH:$JAVA_HOME/bin
+
+tomcat : to start the tomcat go to the tomcat where u installed and then change into bin do ls then u get the list . in that choose to start tomcat
+eg; /opt/apache-tomcat/bin
+select sh startup-sh   (here name of the tomcat is not needed while starting )
+
+
+Jenkins installation:
+If you install the jenkins in /opt , then the path of jenkins is below one
+/opt/apache-tomcat-9.0.104/webapps/jenkins.war
+
+
+
