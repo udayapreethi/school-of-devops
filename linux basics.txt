@@ -1,9 +1,231 @@
 
+               user applications
+                shell(bash)
+                system libraries
+                system utilities
+                o.s (kernel)
+                 Hardware
+Hardware : combination of cpu,memory and stroage
+software: follows the set of instructions ,data or programm used to operate the computers specific tasks.
 
-free
-stable
-secure
-open-source
+system software: which controls the core operations of computer such as operating system,device drivers and language processors
+
+applocation software:programmes designed for specific tasks including word processor,web browsers and utility tools. 
+
+operating system: o.s is software programme which konws how to use hardware.It acts as a bridge b/w the users and computers.It is heart of the system.o.s can manage the process management, network, memory management.
+With out o.s the computer is useless.
+we are giving direct instructions through commands .
+eg: windows, linux,macos,android
+
+
+Device drivers: these are special piece of software in the kernel that let the operating system communicate with the hardware devices like keyboard, printers,hardware.
+
+.acts as a bridge, translating generic os requests into commands the hardware understands.
+
+
+CLI:command line interface , Text based interface, where you interact with the computer by typing commmands on a keyboard. it doesn't have buttons or pictures , just plain text only
+
+GUI:we can interact through the icons, pictures and buttons with computer.
+eg: mobile phone, windows desktop
+
+process management; pm refers to how the linux kernel creates, schedules, manages and terminates the programmes running  in the system.
+.starting and stopping of the programme
+.keeps tracking the status of the programme like is it running, sleepiing ...
+
+
+Process Management in Linux
+Introduction to Process Management
+A process is an instance of a running program. Linux provides multiple utilities to monitor, manage, and control processes effectively. Each process has a unique Process ID (PID) and belongs to a parent process.
+
+Index of Commands Covered
+Viewing Processes
+
+ps aux – View all running processes
+ps -u username – View processes for a specific user
+ps -C processname – Show a process by name
+pgrep processname – Find a process by name and return its PID
+pidof processname – Find the PID of a running program
+
+Managing Processes
+kill PID – Terminate a process by PID
+pkill processname – Terminate a process by name
+kill -9 PID – Force kill a process
+pkill -9 processname – Kill all instances of a process
+kill -STOP PID – Stop a running process
+kill -CONT PID – Resume a stopped process
+
+
+Monitoring System Processes
+top – Interactive process viewer
+htop – User-friendly process viewer (requires installation)
+nice -n 10 command – Run a command with a specific priority
+renice -n -5 -p PID – Change priority of an existing process
+
+Daemon Process Management
+systemctl list-units --type=service – List all system daemons
+systemctl start service-name – Start a daemon/service
+systemctl stop service-name – Stop a daemon/service
+systemctl enable service-name – Enable a service at startup
+Memory management: involes handling  the systm RAM
+
+.Allocates memory to programmes when they need.
+.freeup memory when they are done.
+. virtual memory
+
+CPU and Memory Monitoring
+top – Real-time system monitoring
+htop – Interactive process viewer (requires installation)
+vmstat – Report system performance statistics
+free -m – Show memory usage
+
+Disk Monitoring
+df -h – Check disk space usage
+du -sh /path – Show disk usage of a specific directory
+iostat – Display CPU and disk I/O statistics
+
+Network Monitoring
+ifconfig – Show network interfaces (deprecated, use ip a)
+ip a – Show network interface details
+netstat -tulnp – Show active connections and listening ports
+ss -tulnp – Alternative to netstat for socket statistics
+ping hostname – Test network connectivity
+traceroute hostname – Show network path to a host
+nslookup domain – Get DNS resolution details
+
+Log Monitoring
+tail -f /var/log/syslog – Live monitoring of system logs
+journalctl -f – Live system logs for systemd-based distros
+dmesg | tail – View kernel logs
+
+
+File system management:
+It is about organizing and controlling access to data stored in the disk.
+.handles reading, writing, creating and deleting the files, folders and directories .
+.manages the file permissions, provide access to files for person according to their roles.
+.controles permissions of the files , so only autorized persons can be accessed.
+
+
+File and Directory Management
+
+ls – Lists files and directories in the current location.
+cd /path/to/directory – Changes the working directory.
+pwd – Prints the current working directory.
+mkdir new_folder – Creates a new directory.
+rmdir empty_folder – Removes an empty directory.
+rm file.txt – Deletes a file.
+rm -r folder – Deletes a folder and its contents.
+cp file1.txt file2.txt – Copies a file.
+cp -r dir1 dir2 – Copies a directory recursively.
+mv old_name new_name – Moves or renames a file or directory.
+
+File Viewing and Editing
+
+cat file.txt – Displays file content.
+tac file.txt – Displays file content in reverse order.
+less file.txt – Opens a file for viewing with scrolling support.
+more file.txt – Similar to less, but only moves forward.
+head -n 10 file.txt – Displays the first 10 lines of a file.
+tail -n 10 file.txt – Displays the last 10 lines of a file.
+nano file.txt – Opens a simple text editor.
+vi file.txt – Opens a powerful text editor.
+echo 'Hello' > file.txt – Writes text to a file, overwriting existing content.
+echo 'Hello' >> file.txt – Appends text to a file without overwriting.
+
+Network management;Enabling the computer to send or receive the data over a network.
+.handles network protocols (TCP/IP)
+.manages network devices like wifi-cards,eithernet ports
+.controls data transmission and reception
+. features like firewalls and routing.
+
+
+User management;
+creating and deleting user acconts
+.modifying account details like paswords
+.managing group and prcess permissions
+.A/c to their wokr or role t enable the permissions to files, solders, system cmmands.
+
+/etc/passwd – Stores user account details.
+/etc/shadow – Stores encrypted user passwords.
+/etc/group – Stores group information.
+/etc/gshadow – Stores secure group details.
+
+
+linux operating system: linux interacts with the hardware to handles process management, memory management, network management and disk management.
+
+some of the linux distributions are ubuntu, debian, redhart , fedora and alpine
+
+
+package manager: it is a tool which can automates the process of  software installation, updating,removing the linux server.
+
+ubuntu, debian - apt
+redhat,fedora,cents -dnf /yum for older versins
+
+How does it works.....
+
+1.repositories:
+
+2.Installing software:
+
+3.updating;
+
+4.Removing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Open-source: open-source software is softwar with sourcecode that anyone can inspect,modify and enhance.
 we can access the sr code of th linux OS.
 allowed to run the program for any purpose/usuge
