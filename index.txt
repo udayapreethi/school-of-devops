@@ -5,7 +5,7 @@ History of devops
 what is dev and ops
 devops defination 
 devops and software development life cycle
-build and release workflor
+build and release workflow
 
 
 GIT
