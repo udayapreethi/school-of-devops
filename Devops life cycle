@@ -74,6 +74,60 @@ The **DevOps lifecycle** is a continuous process that integrates development (De
 
 ---
 
-### **DevOps Lifecycle Summary:**  
-This is a continuous loop where each step feeds into the next, enabling faster and more reliable software delivery. Automation and collaboration are key to achieving a successful DevOps culture.
+### 🔹 **DevOps Workflow with GitHub, Maven, Tomcat, SonarQube & Jenkins**
 
+1. **Developer writes code**
+
+   * Developer writes application code (e.g., Java).
+   * Pushes code to **GitHub repository**.
+
+2. **Code versioning**
+
+   * **GitHub** stores the source code.
+   * Enables collaboration, branching, and version control.
+
+3. **Build stage**
+
+   * **Jenkins** detects code changes (via webhook or scheduled job).
+   * Jenkins pulls latest code from **GitHub**.
+   * Jenkins uses **Maven** to build the project → generates `.war` file.
+
+4. **Code quality analysis**
+
+   * During the build, Jenkins integrates with **SonarQube**.
+   * SonarQube scans code for bugs, vulnerabilities, and code smells.
+   * Reports are sent back to Jenkins dashboard.
+
+5. **Artifact storage (optional)**
+
+   * The `.war` file can be uploaded to **Artifactory/Nexus** for versioned storage.
+
+6. **Deployment stage**
+
+   * Jenkins uses **Ansible** or built-in plugins.
+   * Deploys `.war` file into **Tomcat (webapps/)** on testing/production servers.
+
+7. **Application running**
+
+   * Tomcat automatically deploys the `.war` file.
+   * The application is now accessible to users/testers.
+
+8. **Feedback & Monitoring**
+
+   * Testers/QA verify the deployed application.
+   * Developers get feedback for fixes → cycle repeats.
+
+---
+
+👉 **Workflow Summary (Tools at Each Stage):**
+
+* **Developer** → Writes code
+* **GitHub** → Stores code
+* **Jenkins** → CI/CD automation
+* **Maven** → Builds `.war` file
+* **SonarQube** → Code quality check
+* **Tomcat** → Deploys & runs application
+
+---
+
+⚡ Would you like me to also **draw this as a simple pipeline diagram** so it’s more visual for interviews?
