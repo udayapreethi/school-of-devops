@@ -129,4 +129,11 @@ If using **Freestyle Jobs**, you can:
 ✅ **Failure Isolation** → Failures in downstream jobs don't affect upstream jobs.
 
 
-
+Command	Purpose
+sudo systemctl stop jenkins	         Stop Jenkins service
+sudo systemctl disable jenkins	     Disable Jenkins autostart
+sudo apt remove --purge jenkins	     Remove Jenkins package and config files
+sudo apt autoremove	                 Clean up unused dependencies
+sudo rm -rf /var/lib/jenkins	     Delete Jenkins data
+sudo rm -rf /etc/jenkins	         Delete Jenkins config files
+sudo deluser jenkins	              Remove Jenkins user (optional)
