@@ -189,15 +189,16 @@ java -version
 
 set environment variable:
 
+to know the java path use this "readlink -f $(which java)"
+
+
+
 set in /etc/.bashrc
 export JAVA_HOME=java_path
 export PATH=$PATH:$JAVA_HOME/bin
 echo $JAVA_HOME
 
-export JAVA_HOME=/usr/bin/java
 
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-export PATH=$PATH:$JAVA_HOME/bin
 
 tomcat : to start the tomcat go to the tomcat where u installed and then change into bin do ls then u get the list . in that choose to start tomcat
 eg; /opt/apache-tomcat/bin
