@@ -182,15 +182,20 @@ java set up:
 sudo apt update
 sudo apt install openjdk-17-jdk -y
 
-Verify installation:
+Download the java :
 
-java -version
-
+1.copy the latest version or any version of java and use wget 'javalink', after downloading of java, set ENV variables before to that unzip or extract if the files are tar or zip files by using 'tar -xvzf' or 'unzip'.
+2. you can download java file to local system and then you can copy to the instance or linux terminal by using the below command 'sudo cp -r /home/ec2-user/jdk-17.0.12/* /home/ec2-user/jdk-25/'.
+3. Or you can directly install by using below one 
+sudo apt update
+sudo apt install openjdk-17-jdk -y
 
 set environment variable:
 
-to know the java path use this "readlink -f $(which java)"
+to know the java path use this "readlink -f $(which java)" or go to java path where u download and do pwd, take that path and use it for env setup.
 
+Verify installation:
+java -version
 
 
 set in /etc/.bashrc
@@ -198,16 +203,59 @@ export JAVA_HOME=java_path
 export PATH=$PATH:$JAVA_HOME/bin
 echo $JAVA_HOME
 
+After setting the Java environment variables, run "source ~/.bashrc" to apply the changes:
+export JAVA_HOME=/home/ec2-user/jdk-25
+export MAVEN_HOME=/home/ec2-user/apache-maven-3.9.11
+export PATH=$PATH:$JAVA_HOME/bin:$MAVEN_HOME/bin
 
+MAVEN:if you are using maven, follow same as java 
 
-tomcat : to start the tomcat go to the tomcat where u installed and then change into bin do ls then u get the list . in that choose to start tomcat
+export MAVEN_HOME=/home/ec2-user/apache-maven-3.9.11
+export 
+
+after installation of tomcat, you need to change the portal in apache-tomcat/conf/server.xml, change port the '8080' to '8081'.
+tomcat : to start the tomcat go to the path, where u installed and then go to bin, do 'ls' then u get the list in that choose to start tomcat.
+
 eg; /opt/apache-tomcat/bin
 select sh startup-sh   (here name of the tomcat is not needed while starting )
 
+/home/ec2-user/apache-tomcat-11.0.11/webapps
 
-Jenkins installation:
-If you install the jenkins in /opt , then the path of jenkins is below one
-/opt/apache-tomcat-9.0.104/webapps/jenkins.war
+you need to install the jenkins in this path , '/home/ec2-user/apache-tomcat-11.0.11/webapps' , y because to host the jenkins, we need web application, then only we can access. or we can copy the 'jenkins.war' and  place in that path if you installed in diffent place instead of tomcat.
+ 
+
+When you install the jenkins , 
+Here there are different ways to run the java. 
+ 
+If you are using http as web server, then you can you 'java -jar jenkins.war' 
+or using apache-tomcat , you can just start the tomcat, then the jenkins will work, if not check the 'systemctl status jenkins'.
+
+1.after creating a job in the jenkins and click on build now, then the result is in the home/ec2-user/.jenkins/workspace/jobs.
+
+Maven installation.
+ Maven phases:
+ 
+ maven compile: the code is in the human readeable languague, by doing compailing the code convert in to binary form, system readeable language.
+  the code convert into class files or binary files.
+  
+  maven test: after compailing, there will be run the unit tests then test files 
+  
+  maven package: after testing, all files are combined and make into .war or .jar files.
+  
+  
+  
+  mvn clean package: src
+                     pom.xml
+					 target
+  
+  
+  
+ 
+
+
+
+
+
 
 
 
